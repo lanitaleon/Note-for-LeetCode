@@ -15,6 +15,9 @@ Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer 
 Subscribe to see which companies asked this question
 */
 	//the longest string must between two same char
+	//其他没有通过测试的算法
+	//ag1.循环嵌套四层，最容易想到的方法，从第一个字符开始循环查找
+	//ag2.ascii码查找，只考虑了abc的大写和小写，结果测试用例包含[]、‘这样的字符，这个方法是百度来的然而我找不到了
     static int[] last = new int[128];
     public int lengthOfLongestSubstring(String s) {
     //测试用例的字符从空格到大写字母Z，所以128足够了
