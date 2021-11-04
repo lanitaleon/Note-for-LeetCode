@@ -11,6 +11,49 @@ import java.util.Stack;
 public class InorderTraversal {
 
     /**
+     * Morris 中序遍历
+     * 0ms 36.8 MB
+     * 空间复杂度降为O(1)，把栈去掉了
+     *
+     * - x 无左孩子
+     *   - x 加入结果
+     *   - x = x.right
+     * - x 有左孩子，找 predecessor
+     *   - predecessor 右孩子为空，右孩子指向 x，x = x.left
+     *   - predecessor 右孩子不为空，x加入结果，x = x.right
+     *
+     * https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/er-cha-shu-de-zhong-xu-bian-li-by-leetcode-solutio/
+     */
+    public List<Integer> inorderTraversal3(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        TreeNode predecessor;
+        while (root != null) {
+            if (root.left != null) {
+                // predecessor 节点就是当前 root 节点向左走一步，然后一直向右走至无法走为止
+                predecessor = root.left;
+                while (predecessor.right != null && predecessor.right != root) {
+                    predecessor = predecessor.right;
+                }
+                // 让 predecessor 的右指针指向 root，继续遍历左子树
+                if (predecessor.right == null) {
+                    predecessor.right = root;
+                    root = root.left;
+                } else {
+                    // 说明左子树已经访问完了，我们需要断开链接
+                    res.add(root.val);
+                    predecessor.right = null;
+                    root = root.right;
+                }
+            } else {
+                // 如果没有左孩子，则直接访问右孩子
+                res.add(root.val);
+                root = root.right;
+            }
+        }
+        return res;
+    }
+
+    /**
      * 栈
      * 0ms 36.7 MB
      */
