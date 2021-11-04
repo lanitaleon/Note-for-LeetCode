@@ -11,6 +11,33 @@ import java.math.BigInteger;
 public class ClimbStairs {
 
     /**
+     * 矩阵快速幂
+     */
+    public static int climbStairs5(int n) {
+        // https://leetcode-cn.com/problems/climbing-stairs/solution/pa-lou-ti-by-leetcode-solution/
+        // 自己看吧 copy不来
+        return 0;
+    }
+
+    /**
+     * 通项公式
+     * 0ms 35.3 MB
+     * 取决于CPU计算pow的能力
+     */
+    public static int climbStairs4(int n) {
+        // 根据f(n) = f(n-1)+f(n-2)
+        // 得特征方程 x^2 = x + 1
+        // 得 x1 = (1+√5)/2 , x2 = (1-√5)/2
+        // 设 f(n) = c1 * x1^n + c2 * x2^n
+        // 代入f(1)=1, f(2)=1
+        // 得 c1 = 1/√5, c2 = - 1/√5
+        // 得 f(n) = 1/√5 [((1+√5)/2)^n - ((1-√5)/2)^n]
+        double sqrt5 = Math.sqrt(5);
+        double f = Math.pow((1 + sqrt5) / 2, n + 1) - Math.pow((1 - sqrt5) / 2, n + 1);
+        return (int) Math.round(f / sqrt5);
+    }
+
+    /**
      * 动态规划
      * dp[i] = dp[i - 1] + dp[i - 2]
      * p.s. 观察解法2中的答案可以发现这是一个斐波那契数列
@@ -214,7 +241,7 @@ public class ClimbStairs {
 
     public static void main(String[] args) {
 //        System.out.println(climbStairs(2));
-        System.out.println(climbStairs3(35));
+        System.out.println(climbStairs4(35));
 //        System.out.println(climbStairs(4));
 //        System.out.println(combine(34, 1));
     }
