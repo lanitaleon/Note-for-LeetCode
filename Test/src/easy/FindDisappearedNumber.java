@@ -21,6 +21,26 @@ import java.util.List;
 public class FindDisappearedNumber {
 
     /**
+     * 4ms 47.5 MB
+     * 把当前值作为下标指向的位置的数字加上 n
+     * 最后不大于n的就是没出现的 跟解法3大差不差
+     */
+    public static List<Integer> findDisappearedNumbers4(int[] nums) {
+        int n = nums.length;
+        for (int num : nums) {
+            int x = (num - 1) % n;
+            nums[x] += n;
+        }
+        List<Integer> ret = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            if (nums[i] <= n) {
+                ret.add(i + 1);
+            }
+        }
+        return ret;
+    }
+
+    /**
      * 据说是鸽笼原理
      * 7ms 47.3 MB
      * <p>
@@ -102,25 +122,6 @@ public class FindDisappearedNumber {
         System.out.println(findDisappearedNumbers(nums));
         System.out.println(findDisappearedNumbers2(nums));
         System.out.println(findDisappearedNumbers3(nums2));
-    }
-
-    /**
-     * 4ms 47.5 MB
-     * 把当前值作为下标指向的位置的数字加上 n
-     * 最后不大于n的就是没出现的 跟解法3大差不差
-     */
-    public List<Integer> findDisappearedNumbers4(int[] nums) {
-        int n = nums.length;
-        for (int num : nums) {
-            int x = (num - 1) % n;
-            nums[x] += n;
-        }
-        List<Integer> ret = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            if (nums[i] <= n) {
-                ret.add(i + 1);
-            }
-        }
-        return ret;
+        System.out.println(findDisappearedNumbers4(nums2));
     }
 }
