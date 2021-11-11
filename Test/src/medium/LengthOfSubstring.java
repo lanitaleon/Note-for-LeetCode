@@ -1,5 +1,8 @@
 package medium;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 3 无重复字符的最长子串
  * 给定一个字符串 s ，请你找出其中不含有重复字符的最长子串的长度。
@@ -12,12 +15,6 @@ package medium;
  * Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
  */
 public class LengthOfSubstring {
-
-    //the longest string must between two same char
-    //其他没有通过测试的算法
-    //ag1.循环嵌套四层，最容易想到的方法，从第一个字符开始循环查找
-    //ag2.ascii码查找，只考虑了abc的大写和小写，结果测试用例包含[]、‘这样的字符，这个方法是百度来的然而我找不到了
-    static int[] last = new int[128];
 
     /**
      * 我写的 暴力
@@ -54,9 +51,9 @@ public class LengthOfSubstring {
     public static void main(String[] args) {
         System.out.println(lengthOfLongestSubstring("pwwkew"));
         System.out.println(lengthOfLongestSubstring("abcabcbb"));
-        System.out.println(lengthOfLongestSubstring("adbabcbb"));
+        System.out.println(lengthOfLongestSubstring4("adbabcbb"));
         System.out.println(lengthOfLongestSubstring("abc"));
-        System.out.println(lengthOfLongestSubstring("aaa"));
+        System.out.println(lengthOfLongestSubstring3("aaa"));
         System.out.println(lengthOfLongestSubstring2("aab"));
     }
 
@@ -66,6 +63,12 @@ public class LengthOfSubstring {
      * 感谢当时的我连注释都抄了
      */
     public static int lengthOfLongestSubstring(String s) {
+        //the longest string must between two same char
+        //其他没有通过测试的算法
+        //ag1.循环嵌套四层，最容易想到的方法，从第一个字符开始循环查找
+        //ag2.ascii码查找，只考虑了abc的大写和小写，结果测试用例包含[]、‘这样的字符，
+        // 这个方法是百度来的然而我找不到了
+        int[] last = new int[128];
         //测试用例的字符从空格到大写字母Z，所以128足够了
         int start = 0;
         int len = 0;
@@ -91,5 +94,53 @@ public class LengthOfSubstring {
         //比如aab这个字符串和bbbbb这个字符串
         //一定要-start，因为有可能是“bbbbb”这种
         return Math.max(len, s.length() - start);
+    }
+
+    /**
+     * 跟解法1类似，更离谱地把ascii index去掉，直接用字符串的下标
+     */
+    public static int lengthOfLongestSubstring4(String s) {
+        // 记录字符上一次出现的位置
+        int[] last = new int[128];
+        for (int i = 0; i < 128; i++) {
+            last[i] = -1;
+        }
+        int n = s.length();
+
+        int res = 0;
+        int start = 0;
+        // 窗口开始位置
+        for (int i = 0; i < n; i++) {
+            int index = s.charAt(i);
+            start = Math.max(start, last[index] + 1);
+            res = Math.max(res, i - start + 1);
+            last[index] = i;
+        }
+        return res;
+    }
+
+    /**
+     * 官方 滑动窗口 我觉得也挺暴力的
+     * 6ms 38.6 MB
+     */
+    public static int lengthOfLongestSubstring3(String s) {
+        Set<Character> occ = new HashSet<>();
+        int n = s.length();
+        // 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动
+        int rk = -1, ans = 0;
+        for (int i = 0; i < n; ++i) {
+            if (i != 0) {
+                // 左指针向右移动一格，移除一个字符
+                occ.remove(s.charAt(i - 1));
+            }
+            while (rk + 1 < n && !occ.contains(s.charAt(rk + 1))) {
+                // 不断地移动右指针
+                occ.add(s.charAt(rk + 1));
+                ++rk;
+            }
+            // 第 i 到 rk 个字符是一个极长的无重复字符子串
+            ans = Math.max(ans, rk - i + 1);
+        }
+        return ans;
     }
 }
