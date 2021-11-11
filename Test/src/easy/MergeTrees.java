@@ -85,7 +85,7 @@ public class MergeTrees {
     }
 
     /**
-     * 我写的
+     * 我写的 突然发现不能用原树 额
      * 0ms 38.6 MB
      */
     public static TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
