@@ -15,8 +15,47 @@ import java.util.Arrays;
 public class NextPermutation {
 
     /**
+     * 两遍扫描
+     * 0ms 38.6 MB
+     * 思路基本一致 实现更干净
+     */
+    public static void nextPermutation2(int[] nums) {
+        int i = nums.length - 2;
+        while (i >= 0 && nums[i] >= nums[i + 1]) {
+            i--;
+        }
+        if (i >= 0) {
+            int j = nums.length - 1;
+            while (j >= 0 && nums[i] >= nums[j]) {
+                j--;
+            }
+            swap(nums, i, j);
+        }
+        reverse(nums, i + 1);
+    }
+
+    public static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    public static void reverse(int[] nums, int start) {
+        int left = start, right = nums.length - 1;
+        while (left < right) {
+            swap(nums, left, right);
+            left++;
+            right--;
+        }
+    }
+
+    /**
      * 我写的 落泪了
-     * 1ms 38.6 MB
+     * 0ms 38 MB
+     * 第一个版本
+     * 1. 在findSecondMax时没有包含lastIndex 导致多了一堆没必要的分支判断
+     * 2. 最开始的全程降序时忘记用rank替代Arrays.sort 增加了运行时间
+     * 参考解法2后优化了实现
      */
     public static void nextPermutation(int[] nums) {
         if (nums.length == 1) {
@@ -38,7 +77,7 @@ public class NextPermutation {
         }
         // 全程降序
         if (lastIndex == -1) {
-            Arrays.sort(nums);
+            rank(0, nums);
             return;
         }
         if (lastIndex == nums.length - 1) {
@@ -58,27 +97,9 @@ public class NextPermutation {
             }
             return;
         }
-        // 最后一个升序就是开头，后面全是降序
-        if (lastIndex == 1) {
-            int maxBehind = findSecondMax(lastIndex, nums);
-            if (maxBehind == -1) {
-                switchNum(lastIndex, 0, nums);
-            } else {
-                switchNum(0, maxBehind, nums);
-                rank(lastIndex, nums);
-            }
-            return;
-        }
-        // 如果最大值后面不存在相邻升序
-        // 找到最大值位置后面 大于最大值前面的值 且在后面是最小的值
         int maxBehind = findSecondMax(lastIndex, nums);
-        if (maxBehind == -1) {
-            switchNum(lastIndex - 1, lastIndex, nums);
-            rank(lastIndex, nums);
-            return;
-        }
         // 进位
-        switchNum(maxBehind, lastIndex - 1, nums);
+        switchNum(lastIndex - 1, maxBehind, nums);
         // 从最大值位置（含）开始升序
         // 实际上此时maxIndex后面的数是降序或平序排列的 对称交换就可以了
         rank(lastIndex, nums);
@@ -94,7 +115,7 @@ public class NextPermutation {
     }
 
     public static int findSecondMax(int maxIndex, int[] nums) {
-        for (int i = nums.length - 1; i > maxIndex; i--) {
+        for (int i = nums.length - 1; i >= maxIndex; i--) {
             if (nums[i] > nums[maxIndex - 1]) {
                 return i;
             }
@@ -113,7 +134,7 @@ public class NextPermutation {
         int[] nums2 = {3, 1, 2};
         int[] nums3 = {4, 2, 0, 2, 3, 2, 0};
         int[] nums4 = {4, 2, 4, 4, 3};
-        nextPermutation(nums);
+        nextPermutation2(nums);
         nextPermutation(nums2);
         nextPermutation(nums3);
         nextPermutation(nums4);
