@@ -21,11 +21,6 @@ import java.util.Map;
 public class BuildTree {
 
     /**
-     * 1ms 38.4 MB
-     */
-    private static Map<Integer, Integer> indexMap;
-
-    /**
      * 1ms 37.9 MB
      * https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/solution/cong-qian-xu-yu-zhong-xu-bian-li-xu-lie-gou-zao-9/
      */
@@ -56,13 +51,25 @@ public class BuildTree {
         return root;
     }
 
-    public static TreeNode myBuildTree(int[] preorder,
+    /**
+     * 1ms 38.4 MB
+     */
+    public static TreeNode buildTree2(int[] preorder, int[] inorder) {
+        int n = preorder.length;
+        // 构造哈希映射，帮助我们快速定位根节点
+        Map<Integer, Integer> indexMap = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            indexMap.put(inorder[i], i);
+        }
+        return myBuildTree(preorder, indexMap, 0, n - 1, 0);
+    }
+
+    public static TreeNode myBuildTree(int[] preorder, Map<Integer, Integer> indexMap,
                                        int preorder_left, int preorder_right,
                                        int inorder_left) {
         if (preorder_left > preorder_right) {
             return null;
         }
-
         // 前序遍历中的第一个节点就是根节点
 //        int preorder_root = preorder_left;
         // 在中序遍历中定位根节点
@@ -74,37 +81,35 @@ public class BuildTree {
         int size_left_subtree = inorder_root - inorder_left;
         // 递归地构造左子树，并连接到根节点
         // 先序遍历中「从 左边界+1 开始的 size_left_subtree」个元素就对应了中序遍历中「从 左边界 开始到 根节点定位-1」的元素
-        root.left = myBuildTree(preorder, preorder_left + 1, preorder_left + size_left_subtree, inorder_left);
+        root.left = myBuildTree(preorder, indexMap, preorder_left + 1, preorder_left + size_left_subtree, inorder_left);
         // 递归地构造右子树，并连接到根节点
         // 先序遍历中「从 左边界+1+左子树节点数目 开始到 右边界」的元素就对应了中序遍历中「从 根节点定位+1 到 右边界」的元素
-        root.right = myBuildTree(preorder, preorder_left + size_left_subtree + 1, preorder_right, inorder_root + 1);
+        root.right = myBuildTree(preorder, indexMap, preorder_left + size_left_subtree + 1, preorder_right, inorder_root + 1);
         return root;
-    }
-
-    public static TreeNode buildTree2(int[] preorder, int[] inorder) {
-        int n = preorder.length;
-        // 构造哈希映射，帮助我们快速定位根节点
-        indexMap = new HashMap<>();
-        for (int i = 0; i < n; i++) {
-            indexMap.put(inorder[i], i);
-        }
-        return myBuildTree(preorder, 0, n - 1, 0);
     }
 
     /**
      * 我写的
-     * 3ms 38.1 MB
+     * 3ms 38.3 MB
+     * 改Map后
+     * 1ms 38.5 MB
      */
     public static TreeNode buildTree(int[] preorder, int[] inorder) {
         if (preorder.length == 1) {
             return new TreeNode(preorder[0]);
         }
+        // 参考解法2 用map优化查询index的速度
+        Map<Integer, Integer> inorderMap = new HashMap<>();
+        for (int i = 0; i < inorder.length; i++) {
+            inorderMap.put(inorder[i], i);
+        }
         // 根节点将 inorder一分为二 左边为左子树 右边为右子树
-        return build(0, inorder.length - 1, 0, inorder, preorder);
+        return build(0, inorder.length - 1, 0, inorder, preorder, inorderMap);
     }
 
     public static TreeNode build(int start, int end, int rootPreIndex,
-                                 int[] inorder, int[] preorder) {
+                                 int[] inorder, int[] preorder,
+                                 Map<Integer, Integer> inorderMap) {
         if (end < start) {
             return null;
         }
@@ -112,20 +117,14 @@ public class BuildTree {
             return new TreeNode(inorder[start]);
         }
         TreeNode nextRoot = new TreeNode(preorder[rootPreIndex]);
-        int nextMid = -1;
-        for (int i = start; i <= end; i++) {
-            if (inorder[i] == preorder[rootPreIndex]) {
-                nextMid = i;
-                break;
-            }
-        }
+        int nextMid = inorderMap.get(preorder[rootPreIndex]);
         // 左子树的根节点 是 preorder中 上一次根节点位置 + 1
         nextRoot.left = build(start, nextMid - 1,
-                rootPreIndex + 1, inorder, preorder);
+                rootPreIndex + 1, inorder, preorder, inorderMap);
         // 右子树的根节点 是 preorder中 上一次根节点位置 + 左子树节点数 + 1
         int nextPreRightRootIndex = rootPreIndex + nextMid - start + 1;
         nextRoot.right = build(nextMid + 1, end,
-                nextPreRightRootIndex, inorder, preorder);
+                nextPreRightRootIndex, inorder, preorder, inorderMap);
         return nextRoot;
     }
 
