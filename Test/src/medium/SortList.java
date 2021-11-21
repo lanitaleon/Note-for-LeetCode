@@ -29,6 +29,9 @@ public class SortList {
             length++;
             node = node.next;
         }
+        // 1个1个合并 merge 1和2 3和4 5和6 ...
+        // 2个2个合并 merge 1-2和3-4 5-6和7-8 ...
+        // 4个4个合并 merge 1-4和5-8 9-12和13-16 ...
         ListNode dummyHead = new ListNode(0, head);
         for (int subLength = 1; subLength < length; subLength <<= 1) {
             ListNode prev = dummyHead, curr = dummyHead.next;
@@ -48,33 +51,12 @@ public class SortList {
                     next = curr.next;
                     curr.next = null;
                 }
-                prev.next = merge2(head1, head2);
+                prev.next = merge(head1, head2);
                 while (prev.next != null) {
                     prev = prev.next;
                 }
                 curr = next;
             }
-        }
-        return dummyHead.next;
-    }
-
-    public static ListNode merge2(ListNode head1, ListNode head2) {
-        ListNode dummyHead = new ListNode(0);
-        ListNode temp = dummyHead, temp1 = head1, temp2 = head2;
-        while (temp1 != null && temp2 != null) {
-            if (temp1.val <= temp2.val) {
-                temp.next = temp1;
-                temp1 = temp1.next;
-            } else {
-                temp.next = temp2;
-                temp2 = temp2.next;
-            }
-            temp = temp.next;
-        }
-        if (temp1 != null) {
-            temp.next = temp1;
-        } else if (temp2 != null) {
-            temp.next = temp2;
         }
         return dummyHead.next;
     }
