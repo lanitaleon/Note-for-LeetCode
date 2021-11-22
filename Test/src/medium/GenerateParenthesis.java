@@ -96,8 +96,8 @@ public class GenerateParenthesis {
     }
 
     public static void main(String[] args) {
-//        System.out.println(generateParenthesis(1));
-//        System.out.println(generateParenthesis2(2));
+        System.out.println(generateParenthesis(1));
+        System.out.println(generateParenthesis2(2));
         System.out.println(generateParenthesis3(2));
     }
 }

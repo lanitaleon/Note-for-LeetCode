@@ -12,11 +12,36 @@ public class ClimbStairs {
 
     /**
      * 矩阵快速幂
+     * 0ms 35.1 MB
+     * 自己看吧
+     * https://leetcode-cn.com/problems/climbing-stairs/solution/pa-lou-ti-by-leetcode-solution/
      */
     public static int climbStairs5(int n) {
-        // https://leetcode-cn.com/problems/climbing-stairs/solution/pa-lou-ti-by-leetcode-solution/
-        // 自己看吧 copy不来
-        return 0;
+        int[][] q = {{1, 1}, {1, 0}};
+        int[][] res = pow(q, n);
+        return res[0][0];
+    }
+
+    public static int[][] pow(int[][] a, int n) {
+        int[][] ret = {{1, 0}, {0, 1}};
+        while (n > 0) {
+            if ((n & 1) == 1) {
+                ret = multiply(ret, a);
+            }
+            n >>= 1;
+            a = multiply(a, a);
+        }
+        return ret;
+    }
+
+    public static int[][] multiply(int[][] a, int[][] b) {
+        int[][] c = new int[2][2];
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                c[i][j] = a[i][0] * b[0][j] + a[i][1] * b[1][j];
+            }
+        }
+        return c;
     }
 
     /**
@@ -240,9 +265,11 @@ public class ClimbStairs {
     }
 
     public static void main(String[] args) {
-//        System.out.println(climbStairs(2));
+        System.out.println(climbStairs3(2));
         System.out.println(climbStairs4(35));
-//        System.out.println(climbStairs(4));
-//        System.out.println(combine(34, 1));
+        System.out.println(climbStairs(4));
+        System.out.println(climbStairs2(4));
+        System.out.println(climbStairs5(4));
+        System.out.println(combine(34, 1));
     }
 }

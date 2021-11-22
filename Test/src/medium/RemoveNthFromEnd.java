@@ -23,6 +23,18 @@ public class RemoveNthFromEnd {
      */
     static int cur = 0;
 
+    public static ListNode removeNthFromEnd3(ListNode head, int n) {
+        if (head == null) {
+            return null;
+        }
+        head.next = removeNthFromEnd3(head.next, n);
+        cur++;
+        if (n == cur) {
+            return head.next;
+        }
+        return head;
+    }
+
     /**
      * 快慢指针
      * 0ms 36.2 MB
@@ -45,18 +57,6 @@ public class RemoveNthFromEnd {
             slow = slow.next;
         }
         slow.next = slow.next.next;
-        return head;
-    }
-
-    public static ListNode removeNthFromEnd3(ListNode head, int n) {
-        if (head == null) {
-            return null;
-        }
-        head.next = removeNthFromEnd3(head.next, n);
-        cur++;
-        if (n == cur) {
-            return head.next;
-        }
         return head;
     }
 

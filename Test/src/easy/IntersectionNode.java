@@ -78,6 +78,26 @@ public class IntersectionNode {
     }
 
     /**
+     * 7ms 42.2 MB
+     */
+    public static ListNode getIntersectionNode3(ListNode headA, ListNode headB) {
+        Set<ListNode> visited = new HashSet<>();
+        ListNode temp = headA;
+        while (temp != null) {
+            visited.add(temp);
+            temp = temp.next;
+        }
+        temp = headB;
+        while (temp != null) {
+            if (visited.contains(temp)) {
+                return temp;
+            }
+            temp = temp.next;
+        }
+        return null;
+    }
+
+    /**
      * 牛逼就是说
      * 1ms 41.2 MB
      */
@@ -161,26 +181,6 @@ public class IntersectionNode {
         } else {
             System.out.println(res.val);
         }
-    }
-
-    /**
-     * 7ms 42.2 MB
-     */
-    public ListNode getIntersectionNode3(ListNode headA, ListNode headB) {
-        Set<ListNode> visited = new HashSet<>();
-        ListNode temp = headA;
-        while (temp != null) {
-            visited.add(temp);
-            temp = temp.next;
-        }
-        temp = headB;
-        while (temp != null) {
-            if (visited.contains(temp)) {
-                return temp;
-            }
-            temp = temp.next;
-        }
-        return null;
     }
 
     public static class ListNode {

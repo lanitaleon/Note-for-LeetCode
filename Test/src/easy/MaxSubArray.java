@@ -125,14 +125,14 @@ public class MaxSubArray {
 
     public static void main(String[] args) {
         System.out.println(maxSubArray4(new int[]{-1, -3, -4, -2}));
-//        System.out.println(maxSubArray4(new int[]{1, 2, -1, -2, 2, 1, -2, 1, 4, -5, 4}));
-//        System.out.println(maxSubArray4(new int[]{2, 1, -2, 1, 4, -5, 4}));
+        System.out.println(maxSubArray(new int[]{1, 2, -1, -2, 2, 1, -2, 1, 4, -5, 4}));
+        System.out.println(maxSubArray3(new int[]{2, 1, -2, 1, 4, -5, 4}));
 //        System.out.println(maxSubArray4(new int[]{-1, 0, -2}));
 //        System.out.println(maxSubArray5(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 5}));
 //        System.out.println(maxSubArray5(new int[]{1, -2, 3, 4}));
 //        System.out.println(maxSubArray5(new int[]{-2, 1}));
-//        System.out.println(maxSubArray5(new int[]{1,2,-1}));
+        System.out.println(maxSubArray5(new int[]{1, 2, -1}));
 //        System.out.println(maxSubArray3(new int[]{-1, 1,-2}));
-//        System.out.println(maxSubArray2(new int[]{-9, -2, 1, 8, 7, -6, 4, 9, -9, -5, 0, 5, -2, 5, 9, 7}));
+        System.out.println(maxSubArray2(new int[]{-9, -2, 1, 8, 7, -6, 4, 9, -9, -5, 0, 5, -2, 5, 9, 7}));
     }
 }

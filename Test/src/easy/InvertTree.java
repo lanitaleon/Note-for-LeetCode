@@ -17,12 +17,12 @@ public class InvertTree {
      * 0ms 35.8 MB
      * 官方
      */
-    public TreeNode invertTree2(TreeNode root) {
+    public static TreeNode invertTree2(TreeNode root) {
         if (root == null) {
             return null;
         }
-        TreeNode left = invertTree(root.left);
-        root.left = invertTree(root.right);
+        TreeNode left = invertTree2(root.left);
+        root.left = invertTree2(root.right);
         root.right = left;
         return root;
     }
@@ -32,7 +32,7 @@ public class InvertTree {
      * 现在离谷歌就差写一个homebrew了
      * 0ms 35.9 MB
      */
-    public TreeNode invertTree(TreeNode root) {
+    public static TreeNode invertTree(TreeNode root) {
         if (root == null) {
             return null;
         }

@@ -25,6 +25,24 @@ public class PalindromeTree {
      */
     private static ListNode frontPointer;
 
+    private static boolean recursivelyCheck(ListNode currentNode) {
+        if (currentNode != null) {
+            if (!recursivelyCheck(currentNode.next)) {
+                return false;
+            }
+            if (currentNode.val != frontPointer.val) {
+                return false;
+            }
+            frontPointer = frontPointer.next;
+        }
+        return true;
+    }
+
+    public static boolean isPalindrome5(ListNode head) {
+        frontPointer = head;
+        return recursivelyCheck(head);
+    }
+
     /**
      * 哈希 牛逼
      * 12ms 47.7 MB
@@ -49,24 +67,6 @@ public class PalindromeTree {
         System.out.println(left);
         System.out.println(right);
         return left == right;
-    }
-
-    private static boolean recursivelyCheck(ListNode currentNode) {
-        if (currentNode != null) {
-            if (!recursivelyCheck(currentNode.next)) {
-                return false;
-            }
-            if (currentNode.val != frontPointer.val) {
-                return false;
-            }
-            frontPointer = frontPointer.next;
-        }
-        return true;
-    }
-
-    public static boolean isPalindrome5(ListNode head) {
-        frontPointer = head;
-        return recursivelyCheck(head);
     }
 
     /**
