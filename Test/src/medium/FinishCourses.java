@@ -30,11 +30,13 @@ public class FinishCourses {
         for (int i = 0; i < numCourses; ++i) {
             edges.add(new ArrayList<>());
         }
+        // index指向别的点的数量
         int[] in_degree = new int[numCourses];
         for (int[] info : prerequisites) {
             edges.get(info[1]).add(info[0]);
             ++in_degree[info[0]];
         }
+        // 没有指向别的点代表是安全的点
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < numCourses; ++i) {
             if (in_degree[i] == 0) {
@@ -45,13 +47,17 @@ public class FinishCourses {
         while (!queue.isEmpty()) {
             ++visited;
             int u = queue.poll();
+            // 安全的点被指向的这条线也是安全的
+            // 指向安全点的点对应的数量 -1
             for (int v: edges.get(u)) {
                 --in_degree[v];
+                // 如果-1后这个点没有指向别的点 那它也是安全的点
                 if (in_degree[v] == 0) {
                     queue.offer(v);
                 }
             }
         }
+        // 如果所有的点都标记为安全 则没有环
         return visited == numCourses;
     }
 
