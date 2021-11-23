@@ -21,6 +21,7 @@ public class NumIsLand {
     /**
      * 并查集
      * 10ms 46.3 MB
+     * https://zhuanlan.zhihu.com/p/93647900/
      */
     public static int numIslands3(char[][] grid) {
         if (grid == null || grid.length == 0) {
@@ -161,9 +162,14 @@ public class NumIsLand {
         System.out.println(numIslands3(grid2));
     }
 
+    /**
+     * 并查集
+     */
     static class UnionFind {
         int count;
+        // 每个元素的父节点 最顶上那个
         int[] parent;
+        // 每个根节点对应树的深度
         int[] rank;
 
         public UnionFind(char[][] grid) {
