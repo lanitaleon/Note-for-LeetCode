@@ -69,6 +69,10 @@ public class NumSquares {
         if (n < 4) {
             return n;
         }
+        // f[i]表示需要多少个数表示i，这些数必然在1到根号n之间
+        // 枚举这些数，假设当前枚举到j，
+        // 那么我们还需要取若干数的平方，构成 i-j^2.
+        // 此时我们发现该子问题和原问题类似，只是规模变小了。
         int[] f = new int[n + 1];
         for (int i = 1; i <= n; i++) {
             int minn = Integer.MAX_VALUE;
@@ -85,8 +89,8 @@ public class NumSquares {
         System.out.println(numSquares(12));
         System.out.println(numSquares(19));
         System.out.println(numSquares(48));
-        System.out.println(numSquares2(43));
-        System.out.println(numSquares(88));
+        System.out.println(numSquares(43));
+        System.out.println(numSquares2(88));
     }
 }
 
