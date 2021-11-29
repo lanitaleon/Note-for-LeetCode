@@ -41,7 +41,7 @@ public class CalcEquation {
         q.add(Arrays.asList("a", "e"));
         q.add(Arrays.asList("a", "a"));
         q.add(Arrays.asList("x", "x"));
-        System.out.println(Arrays.toString(ce.calcEquation(e, values, q)));
+        System.out.println(Arrays.toString(ce.calcEquation2(e, values, q)));
 
         List<List<String>> e2 = new ArrayList<>();
         e2.add(Arrays.asList("a", "b"));
@@ -91,7 +91,7 @@ public class CalcEquation {
         q5.add(Arrays.asList("x4", "x3"));
         q5.add(Arrays.asList("x6", "x6"));
         q5.add(Arrays.asList("x0", "x0"));
-        System.out.println(Arrays.toString(ce.calcEquation(e5, v5, q5)));
+        System.out.println(Arrays.toString(ce.calcEquation3(e5, v5, q5)));
 
         List<List<String>> e6 = new ArrayList<>();
         e6.add(Arrays.asList("a", "b"));
@@ -102,7 +102,145 @@ public class CalcEquation {
         q6.add(Arrays.asList("b", "d"));
         q6.add(Arrays.asList("b", "a"));
         q6.add(Arrays.asList("d", "c"));
-        System.out.println(Arrays.toString(ce.calcEquation(e6, v6, q6)));
+        System.out.println(Arrays.toString(ce.calcEquation2(e6, v6, q6)));
+    }
+
+    /**
+     * Floyd 算法
+     * 1ms 37.3 MB
+     * 实现更像是图论
+     * https://leetcode-cn.com/problems/evaluate-division/solution/chu-fa-qiu-zhi-by-leetcode-solution-8nxb/
+     */
+    public double[] calcEquation3(List<List<String>> equations,
+                                  double[] values, List<List<String>> queries) {
+        int varIdx = 0;
+        // 将字符映射到下标
+        Map<String, Integer> variables = new HashMap<>();
+        int n = equations.size();
+        for (List<String> equation : equations) {
+            if (!variables.containsKey(equation.get(0))) {
+                variables.put(equation.get(0), varIdx++);
+            }
+            if (!variables.containsKey(equation.get(1))) {
+                variables.put(equation.get(1), varIdx++);
+            }
+        }
+        // graph[a][b] = a/b
+        // graph[b][a] = b/a
+        double[][] graph = new double[varIdx][varIdx];
+        for (int i = 0; i < varIdx; i++) {
+            Arrays.fill(graph[i], -1.0);
+        }
+        for (int i = 0; i < n; i++) {
+            int va = variables.get(equations.get(i).get(0)),
+                    vb = variables.get(equations.get(i).get(1));
+            graph[va][vb] = values[i];
+            graph[vb][va] = 1.0 / values[i];
+        }
+        // 遍历计算出所有的 a/b * b/c = a/c 真牛啊
+        for (int k = 0; k < varIdx; k++) {
+            for (int i = 0; i < varIdx; i++) {
+                for (int j = 0; j < varIdx; j++) {
+                    if (graph[i][k] > 0 && graph[k][j] > 0) {
+                        graph[i][j] = graph[i][k] * graph[k][j];
+                    }
+                }
+            }
+        }
+
+        int queriesCount = queries.size();
+        double[] ret = new double[queriesCount];
+        for (int i = 0; i < queriesCount; i++) {
+            List<String> query = queries.get(i);
+            double result = -1.0;
+            if (variables.containsKey(query.get(0)) && variables.containsKey(query.get(1))) {
+                int ia = variables.get(query.get(0)), ib = variables.get(query.get(1));
+                if (graph[ia][ib] > 0) {
+                    result = graph[ia][ib];
+                }
+            }
+            ret[i] = result;
+        }
+        return ret;
+    }
+
+    /**
+     * 广度优先搜索
+     * 1ms 37.4 MB
+     * 实现是真挺绕的
+     */
+    public double[] calcEquation2(List<List<String>> equations,
+                                  double[] values, List<List<String>> queries) {
+        int varIdx = 0;
+        Map<String, Integer> variables = new HashMap<>();
+
+        int n = equations.size();
+        for (List<String> equation : equations) {
+            if (!variables.containsKey(equation.get(0))) {
+                variables.put(equation.get(0), varIdx++);
+            }
+            if (!variables.containsKey(equation.get(1))) {
+                variables.put(equation.get(1), varIdx++);
+            }
+        }
+
+        // 对于每个点，存储其直接连接到的所有点及对应的权值
+        List<Pair>[] edges = new List[varIdx];
+        for (int i = 0; i < varIdx; i++) {
+            edges[i] = new ArrayList<>();
+        }
+        for (int i = 0; i < n; i++) {
+            int va = variables.get(equations.get(i).get(0)),
+                    vb = variables.get(equations.get(i).get(1));
+            // va/vb
+            edges[va].add(new Pair(vb, values[i]));
+            // vb/va
+            edges[vb].add(new Pair(va, 1.0 / values[i]));
+        }
+
+        int queriesCount = queries.size();
+        double[] ret = new double[queriesCount];
+        for (int i = 0; i < queriesCount; i++) {
+            List<String> query = queries.get(i);
+            double result = -1.0;
+            if (variables.containsKey(query.get(0)) && variables.containsKey(query.get(1))) {
+                int ia = variables.get(query.get(0)), ib = variables.get(query.get(1));
+                if (ia == ib) {
+                    result = 1.0;
+                } else {
+                    Queue<Integer> points = new LinkedList<>();
+                    points.offer(ia);
+                    double[] ratios = new double[varIdx];
+                    Arrays.fill(ratios, -1.0);
+                    ratios[ia] = 1.0;
+                    // ratio >> a/a a/b a/c
+                    while (!points.isEmpty() && ratios[ib] < 0) {
+                        int x = points.poll();
+                        for (Pair pair : edges[x]) {
+                            int y = pair.index;
+                            double val = pair.value;
+                            if (ratios[y] < 0) {
+                                ratios[y] = ratios[x] * val;
+                                points.offer(y);
+                            }
+                        }
+                    }
+                    result = ratios[ib];
+                }
+            }
+            ret[i] = result;
+        }
+        return ret;
+    }
+
+    static class Pair {
+        int index;
+        double value;
+
+        Pair(int index, double value) {
+            this.index = index;
+            this.value = value;
+        }
     }
 
     /**
