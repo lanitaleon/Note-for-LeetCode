@@ -63,6 +63,7 @@ public class NumSquares {
     /**
      * 动态规划
      * 21ms 37.6 MB
+     * 01背包问题
      * https://leetcode-cn.com/problems/perfect-squares/solution/wan-quan-ping-fang-shu-by-leetcode-solut-t99c/
      */
     public static int numSquares(int n) {

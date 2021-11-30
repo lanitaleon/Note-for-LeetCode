@@ -18,6 +18,7 @@ public class CoinChange {
     /**
      * 动态规划
      * 12ms 37.6 MB
+     * 01背包问题
      */
     public static int coinChange2(int[] coins, int amount) {
         int max = amount + 1;

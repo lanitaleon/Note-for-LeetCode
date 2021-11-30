@@ -16,6 +16,7 @@ public class CanPartition {
     /**
      * 动态规划 与解法2一致 优化存储空间
      * 22ms 37.6 MB
+     * 01背包问题
      */
     public static boolean canPartition3(int[] nums) {
         int n = nums.length;
