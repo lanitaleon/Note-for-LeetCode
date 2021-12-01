@@ -10,18 +10,35 @@ import java.util.Stack;
  */
 public class InorderTraversal {
 
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2, new TreeNode(4),
+                        new TreeNode(5, new TreeNode(8), null)),
+                new TreeNode(3, new TreeNode(6, null, new TreeNode(9)),
+                        new TreeNode(7)));
+        InorderTraversal it = new InorderTraversal();
+        List<Integer> list = it.inorderTraversal2(root);
+        List<Integer> list2 = it.inorderTraversal3(root);
+        List<Integer> list3 = it.inorderTraversal(root);
+        for (Integer i : list) {
+            System.out.print(i + " ");
+        }
+        System.out.println(list2.size());
+        System.out.println(list3.size());
+    }
+
     /**
      * Morris 中序遍历
      * 0ms 36.8 MB
      * 空间复杂度降为O(1)，把栈去掉了
-     *
+     * 算法过程：
      * - x 无左孩子
-     *   - x 加入结果
-     *   - x = x.right
+     * - x 加入结果
+     * - x = x.right
      * - x 有左孩子，找 predecessor
-     *   - predecessor 右孩子为空，右孩子指向 x，x = x.left
-     *   - predecessor 右孩子不为空，x加入结果，x = x.right
-     *
+     * + predecessor 节点就是当前 root 节点向左走一步，然后一直向右走至无法走为止
+     * - predecessor 右孩子为空，右孩子指向 x，x = x.left
+     * - predecessor 右孩子不为空，x加入结果，x = x.right
      * https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/er-cha-shu-de-zhong-xu-bian-li-by-leetcode-solutio/
      */
     public List<Integer> inorderTraversal3(TreeNode root) {
@@ -57,7 +74,7 @@ public class InorderTraversal {
      * 栈
      * 0ms 36.7 MB
      */
-    public static List<Integer> inorderTraversal2(TreeNode root) {
+    public List<Integer> inorderTraversal2(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
@@ -74,7 +91,7 @@ public class InorderTraversal {
         return list;
     }
 
-    public static List<Integer> inorderTraversal(TreeNode root) {
+    public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         if (root == null) {
             return list;
@@ -88,7 +105,7 @@ public class InorderTraversal {
      * 递归
      * 0ms 36.7 MB
      */
-    public static void inorder2(TreeNode node, List<Integer> list, Stack<TreeNode> stack) {
+    public void inorder2(TreeNode node, List<Integer> list, Stack<TreeNode> stack) {
         if (node != null) {
             stack.push(node);
             node = node.left;
@@ -107,7 +124,7 @@ public class InorderTraversal {
      * 我写的 递归
      * 0ms 36.5 MB
      */
-    public static void inorder(TreeNode root, List<Integer> list) {
+    public void inorder(TreeNode root, List<Integer> list) {
         TreeNode temp = root;
         List<TreeNode> leftList = new ArrayList<>();
         leftList.add(temp);
@@ -123,26 +140,10 @@ public class InorderTraversal {
         }
     }
 
-    public static void main(String[] args) {
-        TreeNode root = new TreeNode(1,
-                new TreeNode(2, new TreeNode(4),
-                        new TreeNode(5, new TreeNode(8), null)),
-                new TreeNode(3, new TreeNode(6, null, new TreeNode(9)),
-                        new TreeNode(7)));
-        List<Integer> list = inorderTraversal2(root);
-        for (Integer i : list) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
-    }
-
     public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
-
-        TreeNode() {
-        }
 
         TreeNode(int val) {
             this.val = val;
