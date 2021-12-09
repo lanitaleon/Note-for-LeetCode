@@ -25,10 +25,40 @@ public class LargestRectangleArea {
         int[] heights6 = {4, 2, 0, 3, 2, 4, 3, 4};
         System.out.println(ra.largestRectangleArea3(heights6));
         System.out.println(ra.largestRectangleArea3(heights5));
-        System.out.println(ra.largestRectangleArea3(heights));
+        System.out.println(ra.largestRectangleArea5(heights));
         System.out.println(ra.largestRectangleArea4(heights2));
         System.out.println(ra.largestRectangleArea(heights3));
         System.out.println(ra.largestRectangleArea2(heights4));
+    }
+
+    /**
+     * 单调栈 官方解怎么老是文本和视频的代码版本不一样 无语 这是视频的
+     * 19ms 53 MB
+     */
+    public int largestRectangleArea5(int[] heights) {
+        int len = heights.length;
+        if (len == 0) {
+            return 0;
+        }
+        if (len == 1) {
+            return heights[0];
+        }
+        int area = 0;
+        int[] newHeights = new int[len + 2];
+        System.arraycopy(heights, 0, newHeights, 1, len);
+        len += 2;
+        heights = newHeights;
+        Deque<Integer> stack = new ArrayDeque<>();
+        stack.addLast(0);
+        for (int i = 1; i < len; i++) {
+            while (heights[stack.peekLast()] > heights[i]) {
+                int height = heights[stack.removeLast()];
+                int width = i - stack.peekLast() - 1;
+                area = Math.max(area, width * height);
+            }
+            stack.addLast(i);
+        }
+        return area;
     }
 
     /**
