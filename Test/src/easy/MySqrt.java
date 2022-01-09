@@ -47,7 +47,7 @@ public class MySqrt {
     }
 
     /**
-     * 袖珍计算器法
+     * 袖珍计算器法 这解法不就是耍流氓
      * 0ms 35.7 MB
      * https://leetcode-cn.com/problems/sqrtx/solution/x-de-ping-fang-gen-by-leetcode-solution/
      */
