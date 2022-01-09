@@ -23,15 +23,37 @@ public class SortedArrayToBST {
         System.out.println(r2.val);
 
         int[] n3 = {0, 1, 2, 3, 4, 5, 6};
-        TreeNode r3 = at.sortedArrayToBST(n3);
+        TreeNode r3 = at.sortedArrayToBST2(n3);
         System.out.println(r3.val);
+    }
+
+    /**
+     * 递归 中序遍历
+     * 0ms 38.1 MB
+     * https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/solution/jiang-you-xu-shu-zu-zhuan-huan-wei-er-cha-sou-s-33/
+     * 官解给出根节点选取的三种倾向 大差不差吧感觉 没必要
+     */
+    public TreeNode sortedArrayToBST2(int[] nums) {
+        return helper(nums, 0, nums.length - 1);
+    }
+
+    public TreeNode helper(int[] nums, int left, int right) {
+        if (left > right) {
+            return null;
+        }
+
+        // 总是选择中间位置左边的数字作为根节点
+        int mid = (left + right) / 2;
+
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = helper(nums, left, mid - 1);
+        root.right = helper(nums, mid + 1, right);
+        return root;
     }
 
     /**
      * 我写的 递归 中序遍历
      * 0ms 38.1 MB
-     * https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/solution/jiang-you-xu-shu-zu-zhuan-huan-wei-er-cha-sou-s-33/
-     * 官解给出根节点选取的三种倾向 大差不差吧感觉 没必要
      */
     public TreeNode sortedArrayToBST(int[] nums) {
         return track(0, nums.length - 1, nums);
@@ -56,9 +78,6 @@ public class SortedArrayToBST {
         int val;
         TreeNode left;
         TreeNode right;
-
-        TreeNode() {
-        }
 
         TreeNode(int val) {
             this.val = val;
