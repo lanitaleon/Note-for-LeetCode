@@ -13,6 +13,8 @@ import java.util.List;
  * answer[i] == i （以字符串形式）如果上述条件全不满足。
  * <p>
  * 1 <= n <= 10^4
+ * 听说和下面这个链接有关的一题 还没看
+ * https://blog.codinghorror.com/why-cant-programmers-program/
  */
 public class FizzBuzz {
 
