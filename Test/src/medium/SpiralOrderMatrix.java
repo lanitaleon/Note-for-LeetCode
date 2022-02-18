@@ -69,6 +69,7 @@ public class SpiralOrderMatrix {
             for (int row = top + 1; row <= bottom; row++) {
                 order.add(matrix[row][right]);
             }
+            // 单行/单列的情况避免重复添加 除了初始就是单行单列还有可能是内圈只剩单行单列
             if (left < right && top < bottom) {
                 for (int column = right - 1; column > left; column--) {
                     order.add(matrix[bottom][column]);
