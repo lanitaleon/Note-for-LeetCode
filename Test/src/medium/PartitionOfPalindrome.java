@@ -113,7 +113,7 @@ public class PartitionOfPalindrome {
     public List<List<String>> partition(String s) {
         // 抄了解法2的动态规划替换掉split里边的isPalindrome
         // 也只是9ms 优化到8ms
-        // 感觉是copy arraylist 拖后腿了剩下的2ms
+        // 感觉是copy arraylist的处理顺序 拖后腿了剩下的2ms
         List<List<String>> res = new ArrayList<>();
         split(res, new ArrayList<>(), 0, s.length() - 1, s);
         return res;
