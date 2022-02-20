@@ -23,9 +23,9 @@ public class PartitionOfPalindrome {
 
     public static void main(String[] args) {
         PartitionOfPalindrome pp = new PartitionOfPalindrome();
-        System.out.println(pp.partition2("cdd"));
+        System.out.println(pp.partition("cdd"));
         System.out.println(pp.partition3("aab"));
-        System.out.println(pp.partition("a"));
+        System.out.println(pp.partition2("a"));
     }
 
     /**
@@ -111,6 +111,9 @@ public class PartitionOfPalindrome {
      * 9ms 54.7 MB
      */
     public List<List<String>> partition(String s) {
+        // 抄了解法2的动态规划替换掉split里边的isPalindrome
+        // 也只是9ms 优化到8ms
+        // 感觉是copy arraylist 拖后腿了剩下的2ms
         List<List<String>> res = new ArrayList<>();
         split(res, new ArrayList<>(), 0, s.length() - 1, s);
         return res;
