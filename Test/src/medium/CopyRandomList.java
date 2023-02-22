@@ -97,7 +97,7 @@ public class CopyRandomList {
 
     /**
      * 哈希 + 回溯 花里胡哨的 跟解法一是一样的
-     * https://leetcode-cn.com/problems/copy-list-with-random-pointer/solution/fu-zhi-dai-sui-ji-zhi-zhen-de-lian-biao-rblsf/
+     * <a href="https://leetcode-cn.com/problems/copy-list-with-random-pointer/solution/fu-zhi-dai-sui-ji-zhi-zhen-de-lian-biao-rblsf/">...</a>
      */
     public Node copyRandomList3(Node head) {
         if (head == null) {

@@ -29,6 +29,7 @@ public class FractionToDecimal {
     }
 
     /**
+     * 长除法 思路其实跟我是一样的 但是我写得无比丑陋
      * <a href="https://leetcode.cn/problems/fraction-to-recurring-decimal/solutions/1028368/fen-shu-dao-xiao-shu-by-leetcode-solutio-tqdw/">官解</a>
      * 1ms 38.8MB
      */
