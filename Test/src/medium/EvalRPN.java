@@ -42,7 +42,7 @@ public class EvalRPN {
     /**
      * 数组模拟栈
      * 3ms 41.1 MB
-     * https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/solution/ni-bo-lan-biao-da-shi-qiu-zhi-by-leetcod-wue9/
+     * <a href="https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/solution/ni-bo-lan-biao-da-shi-qiu-zhi-by-leetcod-wue9/">...</a>
      */
     public int evalRPN3(String[] tokens) {
         int[] stack = new int[(tokens.length + 1) / 2];
