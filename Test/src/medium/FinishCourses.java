@@ -64,7 +64,7 @@ public class FinishCourses {
     /**
      * 拓扑排序 深度优先搜索
      * 3ms 38.7 MB
-     * https://leetcode-cn.com/problems/course-schedule/solution/ke-cheng-biao-by-leetcode-solution/
+     * <a href="https://leetcode-cn.com/problems/course-schedule/solution/ke-cheng-biao-by-leetcode-solution/">...</a>
      */
     public static boolean canFinish3(int numCourses, int[][] prerequisites) {
         List<List<Integer>> edges = new ArrayList<>();
