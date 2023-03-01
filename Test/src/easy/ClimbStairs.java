@@ -76,6 +76,7 @@ public class ClimbStairs {
             return 2;
         }
         int[] dp = new int[2];
+        // 每次可以跨1级或2级 故dp[i]=dp[i-2]+dp[i-1]
         // dp[0]表示第n-2个台阶的走法
         // dp[1]代表第n-1个台阶的走法
         dp[0] = 1;
