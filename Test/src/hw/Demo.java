@@ -1,5 +1,9 @@
 package hw;
 
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
+
 public class Demo {
     /**
      * 题目一】相同数字的积木游戏
@@ -96,4 +100,27 @@ public class Demo {
      * 输出：11111000
      *             11111111
      */
+    public static void main(String[] args) {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.addFirst(0);
+        list.addLast(8);
+        Set<Integer> set = new HashSet<>();
+        set.add(1);
+        set.add(11);
+        set.add(6);
+        list.addAll(set);
+        System.out.println( list.getFirst());
+        System.out.println( list.getLast());
+//        list.clear();
+        list.offer(98);
+        list.offerFirst(67);
+        list.offerLast(78);
+        list.poll();
+        for (Integer integer : list) {
+            System.out.println(integer);
+        }
+    }
 }

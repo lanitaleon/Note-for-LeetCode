@@ -39,7 +39,7 @@ public class MergeKLists {
     /**
      * 分治
      * 1ms 40.1 MB
-     * https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/
+     * <a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/">...</a>
      */
     public ListNode mergeKLists3(ListNode[] lists) {
         // 先实现合并两个有序ListNode

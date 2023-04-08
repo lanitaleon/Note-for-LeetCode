@@ -27,7 +27,7 @@ public class IsSubsequence {
     /**
      * 官解 动态规划
      * 这都能规
-     * https://leetcode.cn/problems/is-subsequence/solutions/346539/pan-duan-zi-xu-lie-by-leetcode-solution/
+     * <a href="https://leetcode.cn/problems/is-subsequence/solutions/346539/pan-duan-zi-xu-lie-by-leetcode-solution/">...</a>
      */
     public boolean isSubsequence3(String s, String t) {
         int n = s.length(), m = t.length();
