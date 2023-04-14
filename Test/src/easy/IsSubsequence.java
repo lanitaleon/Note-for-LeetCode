@@ -26,6 +26,7 @@ public class IsSubsequence {
 
     /**
      * 官解 动态规划
+     * 4ms 41.9MB
      * 这都能规
      * <a href="https://leetcode.cn/problems/is-subsequence/solutions/346539/pan-duan-zi-xu-lie-by-leetcode-solution/">...</a>
      */
@@ -59,6 +60,7 @@ public class IsSubsequence {
 
     /**
      * 官解 双指针
+     * 1ms 39.4 MB
      */
     public boolean isSubsequence2(String s, String t) {
         int n = s.length(), m = t.length();
@@ -74,7 +76,7 @@ public class IsSubsequence {
 
 
     /**
-     * 我写的
+     * 我写的 又是实现非常丑陋的一天
      * 1ms 39.6MB
      */
     public boolean isSubsequence(String s, String t) {
