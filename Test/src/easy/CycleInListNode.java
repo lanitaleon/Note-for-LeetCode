@@ -2,6 +2,7 @@ package easy;
 
 import java.util.HashSet;
 import java.util.Set;
+import bean.ListNode;
 
 /**
  * 141 环形链表
@@ -104,15 +105,5 @@ public class CycleInListNode {
         head.next.next.next = new ListNode(-4);
         head.next.next.next.next = head.next;
         System.out.println(hasCycle3(head));
-    }
-
-   static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
     }
 }

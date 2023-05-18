@@ -4,6 +4,7 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import bean.TreeNode;
 
 /**
  * 105 从前序与中序遍历序列构造二叉树
@@ -22,7 +23,7 @@ public class BuildTree {
 
     /**
      * 1ms 37.9 MB
-     * https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/solution/cong-qian-xu-yu-zhong-xu-bian-li-xu-lie-gou-zao-9/
+     * <a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/solution/cong-qian-xu-yu-zhong-xu-bian-li-xu-lie-gou-zao-9/">...</a>
      */
     public static TreeNode buildTree3(int[] preorder, int[] inorder) {
         if (preorder == null || preorder.length == 0) {
@@ -141,15 +142,5 @@ public class BuildTree {
         System.out.println(root.val);
         System.out.println(root2.val);
         System.out.println(root3.val);
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
     }
 }

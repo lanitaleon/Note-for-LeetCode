@@ -1,6 +1,7 @@
 package medium;
 
 import java.util.Arrays;
+import bean.ListNode;
 
 /**
  * 148 排序链表
@@ -17,7 +18,7 @@ public class SortList {
     /**
      * 自底向上归并排序
      * 9ms 46.8 MB
-     * https://leetcode-cn.com/problems/sort-list/solution/pai-xu-lian-biao-by-leetcode-solution/
+     * <a href="https://leetcode-cn.com/problems/sort-list/solution/pai-xu-lian-biao-by-leetcode-solution/">...</a>
      */
     public static ListNode sortList3(ListNode head) {
         if (head == null) {
@@ -155,19 +156,5 @@ public class SortList {
         System.out.println(res.val);
         System.out.println(res2.val);
         System.out.println(res3.val);
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
     }
 }

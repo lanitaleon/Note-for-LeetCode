@@ -3,6 +3,7 @@ package easy;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
+import bean.ListNode;
 
 /**
  * 160 相交链表
@@ -180,16 +181,6 @@ public class IntersectionNode {
             System.out.println("null");
         } else {
             System.out.println(res.val);
-        }
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
         }
     }
 }

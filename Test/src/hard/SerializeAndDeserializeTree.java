@@ -2,6 +2,7 @@ package hard;
 
 import java.util.ArrayList;
 import java.util.List;
+import bean.TreeNode;
 
 /**
  * 297 二叉树的序列化与反序列化
@@ -133,21 +134,5 @@ public class SerializeAndDeserializeTree {
             nodes = nextNodes;
         }
         return root;
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-
-        TreeNode(int x, TreeNode l, TreeNode r) {
-            val = x;
-            left = l;
-            right = r;
-        }
     }
 }

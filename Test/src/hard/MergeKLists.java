@@ -2,6 +2,7 @@ package hard;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
+import bean.ListNode;
 
 /**
  * 23 合并K个升序链表
@@ -146,17 +147,4 @@ public class MergeKLists {
         return prev.next;
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 }

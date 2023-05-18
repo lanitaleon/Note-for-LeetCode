@@ -1,5 +1,7 @@
 package easy;
 
+import bean.ListNode;
+
 /**
  * 83 删除排序链表中的重复元素
  * 给定一个已排序的链表的头 head ，
@@ -40,22 +42,5 @@ public class DeleteDuplicates {
             }
         }
         return head;
-    }
-
-    private static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        public void print() {
-            ListNode temp = this;
-            while (temp != null) {
-                System.out.println(temp.val);
-                temp = temp.next;
-            }
-        }
     }
 }

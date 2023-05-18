@@ -1,5 +1,7 @@
 package hard;
 
+import bean.TreeNode;
+
 /**
  * 124 二叉树中的最大路径和
  * 路径 被定义为一条从树中任意节点出发，
@@ -97,22 +99,6 @@ public class MaxPathSumTree {
                 ret = Math.max(ret, path0);
                 return path0;
             }
-        }
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
         }
     }
 }

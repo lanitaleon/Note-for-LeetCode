@@ -3,6 +3,7 @@ package easy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import bean.TreeNode;
 
 /**
  * 94 二叉树的中序遍历
@@ -39,7 +40,7 @@ public class InorderTraversal {
      * + predecessor 节点就是当前 root 节点向左走一步，然后一直向右走至无法走为止
      * - predecessor 右孩子为空，右孩子指向 x，x = x.left
      * - predecessor 右孩子不为空，x加入结果，x = x.right
-     * https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/er-cha-shu-de-zhong-xu-bian-li-by-leetcode-solutio/
+     * <a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/er-cha-shu-de-zhong-xu-bian-li-by-leetcode-solutio/">...</a>
      */
     public List<Integer> inorderTraversal3(TreeNode root) {
         List<Integer> res = new ArrayList<>();
@@ -137,22 +138,6 @@ public class InorderTraversal {
             if (leftList.get(i).right != null) {
                 inorder(leftList.get(i).right, list);
             }
-        }
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
         }
     }
 }

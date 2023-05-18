@@ -1,6 +1,7 @@
 package medium;
 
 import java.util.*;
+import bean.TreeNode;
 
 /**
  * 437 路径总和 3
@@ -148,21 +149,5 @@ public class PathSumTree {
         int leftCount = existRoute(root.left, nextTarget);
         int rightCount = existRoute(root.right, nextTarget);
         return leftCount + rightCount + nextCount;
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }

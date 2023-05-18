@@ -1,6 +1,7 @@
 package easy;
 
 import java.util.Stack;
+import bean.TreeNode;
 
 /**
  * 543 二叉树的直径
@@ -98,22 +99,6 @@ public class DiameterOfBinaryTree {
                 new TreeNode(3));
         System.out.println(diameterOfBinaryTree(root));
         System.out.println(diameterOfBinaryTree2(root));
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 
 }

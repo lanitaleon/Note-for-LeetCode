@@ -1,5 +1,7 @@
 package medium;
 
+import bean.ListNode;
+
 /**
  * 2 两数相加
  * 给你两个非空 的链表，表示两个非负的整数。
@@ -113,23 +115,6 @@ public class AddTwoNumbers {
         while (n != null) {
             System.out.println(n.val);
             n = n.next;
-        }
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
         }
     }
 }

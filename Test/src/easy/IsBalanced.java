@@ -1,5 +1,7 @@
 package easy;
 
+import bean.TreeNode;
+
 /**
  * 110 平衡二叉树
  * 给定一个二叉树，判断它是否是高度平衡的二叉树。
@@ -114,21 +116,5 @@ public class IsBalanced {
             return Math.max(leftHeight, rightHeight) + 1;
         }
         return -1;
-    }
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }

@@ -1,5 +1,7 @@
 package hard;
 
+import bean.TreeNode;
+
 /**
  * 297 二叉树的序列化与反序列化
  *
@@ -24,7 +26,7 @@ public class SerializeAndDeserializeTree3 {
      * 括号表示编码 + 递归下降解码
      * 具体的还是看链接吧 我是说不清了
      * 18ms 40.5 MB
-     * https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/solution/er-cha-shu-de-xu-lie-hua-yu-fan-xu-lie-hua-by-le-2/
+     * <a href="https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/solution/er-cha-shu-de-xu-lie-hua-yu-fan-xu-lie-hua-by-le-2/">...</a>
      */
     public String serialize(TreeNode root) {
         if (root == null) {
@@ -71,21 +73,5 @@ public class SerializeAndDeserializeTree3 {
             x = x * 10 + data.charAt(ptr[0]++) - '0';
         }
         return x * sgn;
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-
-        TreeNode(int x, TreeNode l, TreeNode r) {
-            val = x;
-            left = l;
-            right = r;
-        }
     }
 }

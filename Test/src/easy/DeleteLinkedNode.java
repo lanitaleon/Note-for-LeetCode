@@ -1,5 +1,7 @@
 package easy;
 
+import bean.ListNode;
+
 /**
  * 237 删除链表中的节点
  * 请编写一个函数，用于 删除单链表中某个特定节点 。
@@ -49,12 +51,4 @@ public class DeleteLinkedNode {
         node.next = null;
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 }

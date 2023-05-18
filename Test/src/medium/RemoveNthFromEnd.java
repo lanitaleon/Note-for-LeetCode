@@ -1,5 +1,7 @@
 package medium;
 
+import bean.ListNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,23 +135,9 @@ public class RemoveNthFromEnd {
     public static void main(String[] args) {
         ListNode head = new ListNode(1, new ListNode(2, new ListNode(3)));
         ListNode res2 = removeNthFromEnd3(head, 2);
-        while (res2 != null) {
-            System.out.println(res2.val);
-            res2 = res2.next;
+        if (res2 != null) {
+            res2.print();
         }
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 }

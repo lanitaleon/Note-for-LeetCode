@@ -1,5 +1,7 @@
 package medium;
 
+import bean.TreeNode;
+
 /**
  * 337 打家劫舍 3
  *
@@ -56,24 +58,5 @@ public class RobTree {
         System.out.println(rob(root));
         System.out.println(rob(root2));
         System.out.println(rob(root3));
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }

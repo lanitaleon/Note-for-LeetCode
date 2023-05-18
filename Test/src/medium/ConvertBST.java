@@ -1,5 +1,7 @@
 package medium;
 
+import bean.TreeNode;
+
 /**
  * 538 把二叉搜索树转换为累加树
  * 给出二叉 搜索 树的根节点，该树的节点值各不相同，
@@ -10,7 +12,7 @@ package medium;
  * 节点的右子树仅包含键 大于 节点键的节点。
  * 左右子树也必须是二叉搜索树。
  * 注意：本题和 1038:
- * https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/
+ * <a href="https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/">...</a>
  * 相同
  * <p>
  * 树中的节点数介于 0 和 10^4 之间。
@@ -162,21 +164,5 @@ public class ConvertBST {
         int res = right(parentSum, root);
         res += sum(root.val, root.left);
         return res;
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }

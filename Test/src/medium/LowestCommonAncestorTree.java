@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import bean.TreeNode;
 
 /**
  * 236 二叉树的最近公共祖先 LCA
@@ -95,16 +96,6 @@ public class LowestCommonAncestorTree {
         if (root.right != null) {
             parent.put(root.right.val, root);
             dfs(root.right);
-        }
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
         }
     }
 }

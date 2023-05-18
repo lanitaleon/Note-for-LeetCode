@@ -3,6 +3,7 @@ package easy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import bean.ListNode;
 
 /**
  * 234 回文链表
@@ -21,7 +22,7 @@ public class PalindromeTree {
      * 很牛 官方解法2 利用递归的运行顺序是反的进行首尾比较
      * 15ms 55.3 MB
      * 空间复杂度是O(n), 原因：
-     * https://leetcode-cn.com/problems/palindrome-linked-list/solution/hui-wen-lian-biao-by-leetcode-solution/
+     * <a href="https://leetcode-cn.com/problems/palindrome-linked-list/solution/hui-wen-lian-biao-by-leetcode-solution/">...</a>
      */
     private static ListNode frontPointer;
 
@@ -242,19 +243,5 @@ public class PalindromeTree {
                                 new ListNode(7, new ListNode(8,
                                         new ListNode(9)))))))));
         System.out.println(isPalindrome(head6));
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
     }
 }

@@ -1,6 +1,7 @@
 package easy;
 
 import java.util.Stack;
+import bean.ListNode;
 
 /**
  * 206 反转链表
@@ -104,15 +105,6 @@ public class ReverseList {
         while (node != null) {
             System.out.println(node.val);
             node = node.next;
-        }
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
         }
     }
 }

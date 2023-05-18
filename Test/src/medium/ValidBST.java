@@ -1,5 +1,7 @@
 package medium;
 
+import bean.TreeNode;
+
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -123,21 +125,5 @@ public class ValidBST {
         System.out.println(isValidBST(root));
         System.out.println(isValidBST2(root2));
         System.out.println(isValidBST3(root2));
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }

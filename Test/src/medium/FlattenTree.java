@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import bean.TreeNode;
 
 /**
  * 114 二叉树展开为链表
@@ -147,21 +148,5 @@ public class FlattenTree {
         flatten4(root2);
         flatten5(root2);
         System.out.println(root2.val);
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }

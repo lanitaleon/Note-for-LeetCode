@@ -1,5 +1,7 @@
 package easy;
 
+import bean.TreeNode;
+
 /**
  * 104 二叉树的最大深度
  * <p>
@@ -63,28 +65,9 @@ public class MaxDepthOfTree {
                 new TreeNode(2, null, new TreeNode(3)));
         TreeNode root4 = new TreeNode(3, new TreeNode(9),
                 new TreeNode(20, new TreeNode(15), new TreeNode(7)));
-        System.out.println(maxDepth2(root));
+        System.out.println(maxDepth(root));
         System.out.println(maxDepth2(root2));
         System.out.println(maxDepth2(root3));
         System.out.println(maxDepth2(root4));
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }

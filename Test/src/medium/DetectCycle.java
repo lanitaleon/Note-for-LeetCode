@@ -2,6 +2,7 @@ package medium;
 
 import java.util.HashSet;
 import java.util.Set;
+import bean.ListNode;
 
 /**
  * 142 环形链表2
@@ -98,16 +99,6 @@ public class DetectCycle {
         ListNode res2 = detectCycle2(head2);
         if (res2 != null) {
             System.out.println(res2.val);
-        }
-    }
-
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
         }
     }
 }

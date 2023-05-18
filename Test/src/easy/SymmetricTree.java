@@ -3,6 +3,7 @@ package easy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import bean.TreeNode;
 
 /**
  * 101 对称二叉树
@@ -174,22 +175,4 @@ public class SymmetricTree {
         System.out.println(isSymmetric3(root3));
     }
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 }
