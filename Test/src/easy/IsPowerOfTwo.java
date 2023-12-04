@@ -17,7 +17,7 @@ public class IsPowerOfTwo {
         System.out.println(ipt.isPowerOfTwo(n));
         System.out.println(ipt.isPowerOfTwo2(n));
         System.out.println(ipt.isPowerOfTwo3(n));
-
+        System.out.println(ipt.isPowerOfTwo4(n));
     }
 
     public boolean isPowerOfTwo3(int n) {
@@ -30,6 +30,14 @@ public class IsPowerOfTwo {
      */
     public boolean isPowerOfTwo2(int n) {
         return n > 0 && (n & (n - 1)) == 0;
+    }
+
+    /**
+     * 对照自己的解，好好看一下什么是丑陋
+     */
+    public boolean isPowerOfTwo4(int n) {
+        int BIG = 1 << 30;
+        return n > 0 && BIG % n == 0;
     }
 
     /**
