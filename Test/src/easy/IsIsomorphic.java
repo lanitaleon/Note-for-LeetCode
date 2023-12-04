@@ -19,7 +19,7 @@ import java.util.Set;
 public class IsIsomorphic {
     public static void main(String[] args) {
         System.out.println(isIsomorphic("add", "egg"));
-        System.out.println(isIsomorphic("badc", "baba"));
+        System.out.println(isIsomorphic2("badc", "baba"));
         System.out.println(isIsomorphic("foo", "bar"));
         System.out.println(isIsomorphic("paper", "title"));
     }
