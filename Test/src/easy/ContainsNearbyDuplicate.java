@@ -28,6 +28,8 @@ public class ContainsNearbyDuplicate {
      * 14ms
      */
     public static boolean containsNearbyDuplicate3(int[] nums, int k) {
+        // 窗口大小为k
+        // 窗口内存在重复元素返回true 尽管如此官解这个窗口也比我想象的要简洁啊
         Set<Integer> set = new HashSet<>();
         int length = nums.length;
         for (int i = 0; i < length; i++) {
@@ -42,6 +44,7 @@ public class ContainsNearbyDuplicate {
     }
 
     /**
+     * 哈希
      * 18ms 这种解法都没想出来真的有点没睡醒了
      */
     public static boolean containsNearbyDuplicate2(int[] nums, int k) {
