@@ -1,9 +1,10 @@
 package medium;
 
-import javafx.util.Pair;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 79 单词搜索
@@ -159,7 +160,7 @@ public class ExistWord {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if (board[i][j] == word.charAt(0)) {
-                    if (findNext2(1, new Pair<>(i, j), word, board, directions)) {
+                    if (findNext2(1, new AbstractMap.SimpleEntry<>(i, j), word, board, directions)) {
                         return true;
                     }
                 }
@@ -168,7 +169,7 @@ public class ExistWord {
         return false;
     }
 
-    public static boolean findNext2(int k, Pair<Integer, Integer> pos,
+    public static boolean findNext2(int k, Map.Entry<Integer, Integer> pos,
                                     String word, char[][] board, int[][] directions) {
         if (k == word.length()) {
             return true;
@@ -178,7 +179,7 @@ public class ExistWord {
             int x = pos.getKey() + direction[0];
             int y = pos.getValue() + direction[1];
             if (x > -1 && x < board.length && y > -1 && y < board[0].length) {
-                Pair<Integer, Integer> nextPos = new Pair<>(x, y);
+                Map.Entry<Integer, Integer> nextPos = new AbstractMap.SimpleEntry<>(x, y);
                 if (word.charAt(k) == board[x][y]) {
                     boolean flag = findNext2(k + 1, nextPos, word, board, directions);
                     if (flag) {
@@ -199,18 +200,18 @@ public class ExistWord {
         if (word.length() > board.length * board[0].length) {
             return false;
         }
-        List<Pair<Integer, Integer>> posList = new ArrayList<>();
+        List<Map.Entry<Integer, Integer>> posList = new ArrayList<>();
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if (board[i][j] == word.charAt(0)) {
-                    posList.add(new Pair<>(i, j));
+                    posList.add(new AbstractMap.SimpleEntry<>(i, j));
                 }
             }
         }
         return findNext(posList, 1, word, board);
     }
 
-    public static boolean findNext(List<Pair<Integer, Integer>> posList, int k,
+    public static boolean findNext(List<Map.Entry<Integer, Integer>> posList, int k,
                                    String word, char[][] board) {
         if (posList.isEmpty()) {
             return false;
@@ -218,9 +219,9 @@ public class ExistWord {
         if (k == word.length()) {
             return true;
         }
-        for (Pair<Integer, Integer> pos : posList) {
+        for (Map.Entry<Integer, Integer> pos : posList) {
             encrypt(pos, board);
-            List<Pair<Integer, Integer>> nextPosList = findChar(pos.getKey(), pos.getValue(),
+            List<Map.Entry<Integer, Integer>> nextPosList = findChar(pos.getKey(), pos.getValue(),
                     word.charAt(k), board);
             boolean res = findNext(nextPosList, k + 1, word, board);
             if (res) {
@@ -232,35 +233,35 @@ public class ExistWord {
         return false;
     }
 
-    public static void encrypt(Pair<Integer, Integer> pos, char[][] board) {
+    public static void encrypt(Map.Entry<Integer, Integer> pos, char[][] board) {
         // 97-122 65-90
         board[pos.getKey()][pos.getValue()] = (char) (board[pos.getKey()][pos.getValue()] - 64);
     }
 
-    public static void decrypt(Pair<Integer, Integer> pos, char[][] board) {
+    public static void decrypt(Map.Entry<Integer, Integer> pos, char[][] board) {
         board[pos.getKey()][pos.getValue()] = (char) (board[pos.getKey()][pos.getValue()] + 64);
     }
 
-    public static List<Pair<Integer, Integer>> findChar(int i, int j, char c, char[][] board) {
-        List<Pair<Integer, Integer>> res = new ArrayList<>();
+    public static List<Map.Entry<Integer, Integer>> findChar(int i, int j, char c, char[][] board) {
+        List<Map.Entry<Integer, Integer>> res = new ArrayList<>();
         i++;
         if (i <= board.length - 1 && board[i][j] == c) {
-            res.add(new Pair<>(i, j));
+            res.add(new AbstractMap.SimpleEntry<>(i, j));
         }
         i--;
         i--;
         if (i >= 0 && board[i][j] == c) {
-            res.add(new Pair<>(i, j));
+            res.add(new AbstractMap.SimpleEntry<>(i, j));
         }
         i++;
         j++;
         if (j <= board[0].length - 1 && board[i][j] == c) {
-            res.add(new Pair<>(i, j));
+            res.add(new AbstractMap.SimpleEntry<>(i, j));
         }
         j--;
         j--;
         if (j >= 0 && board[i][j] == c) {
-            res.add(new Pair<>(i, j));
+            res.add(new AbstractMap.SimpleEntry<>(i, j));
         }
         return res;
     }
