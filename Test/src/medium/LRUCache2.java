@@ -49,9 +49,9 @@ public class LRUCache2 {
             ++size;
             if (size > capacity) {
                 // 如果超出容量，删除双向链表的尾部节点
-                DLinkedNode tail = removeTail();
+                DLinkedNode tailToRemove = removeTail();
                 // 删除哈希表中对应的项
-                cache.remove(tail.key);
+                cache.remove(tailToRemove.key);
                 --size;
             }
         } else {
