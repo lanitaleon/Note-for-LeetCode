@@ -20,11 +20,22 @@ public class ConstructRectangle {
         // [2, 2]
         System.out.println(2 == cr.constructRectangle(4)[0]);
         // [37,1]
-        System.out.println(37 == cr.constructRectangle(37)[0]);
+        System.out.println(37 == cr.constructRectangle4(37)[0]);
         // [427,286]
-        System.out.println(427 == cr.constructRectangle(122122)[0]);
+        System.out.println(427 == cr.constructRectangle3(122122)[0]);
         // [2,1]
         System.out.println(2 == cr.constructRectangle2(2)[0]);
+    }
+
+    /**
+     * 官解 0ms 我还以为这题会有人枚举测试用例呢 还是太简单了都懒得弄了吧
+     */
+    public int[] constructRectangle4(int area) {
+        int w = (int) Math.sqrt(area);
+        while (area % w != 0) {
+            --w;
+        }
+        return new int[]{area / w, w};
     }
 
     /**
