@@ -30,6 +30,7 @@ public class RepeatedSubstringPattern {
      * 民解 5ms
      */
     public boolean repeatedSubstringPattern5(String s) {
+
         int len = s.length();
         s = " " + s;
         int[] next = new int[len + 1];
@@ -57,6 +58,17 @@ public class RepeatedSubstringPattern {
      * 我的评价是 这是简单？？？
      */
     public boolean repeatedSubstringPattern4(String s) {
+        // KMP 的关键是利用 s 也就是需要匹配的字串，自身的特性加快移动过程。
+        // 比如在 ABCABBABC 中查找 ABCABC
+        // ABCABBABC
+        // ABCABC
+        // 此时发现 B 和 C 不匹配，该移动 s 到哪里呢
+        // 由于子串 ABCABC 存在重复的 ABC，可以倒推，虽然第三位 C 和目标中的 B 不匹配，
+        // 但是在 ABC 中已经对比过了 AB 是一致的，所以直接将 s 的开头 ab 对齐到 第二个 ab 处
+        // 如果是穷举的话，这里会回到 b 再开始对比，没有利用 s 中已经对比过的数据这一条件
+        // 如何最大化利用已经对比过的字符，就需要对比 前缀和集合 后缀和集合，这一步就看贴的这俩链接
+        // https://www.cnblogs.com/yjiyjige/p/3263858.html
+        // https://www.cnblogs.com/dusf/p/kmp.html
         return kmp(s);
     }
 
