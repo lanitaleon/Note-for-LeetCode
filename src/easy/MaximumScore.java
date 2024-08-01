@@ -149,7 +149,7 @@ public class MaximumScore {
         // 奇偶分组，排序
         // 如果 cnt 是奇数，先加上最大偶数，cnt 变成偶数
         // 偶数组和奇数组各取前2，谁大加谁，直到 cnt=0 或者数组空了
-        // 空了 cnt 还没取完，就代表没有合格的
+        // 数组空了 cnt 还没取完，就代表没有合格的
         int[] odd = new int[cards.length];
         int[] even = new int[cards.length];
         Arrays.sort(cards);
