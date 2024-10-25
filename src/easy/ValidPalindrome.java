@@ -70,9 +70,7 @@ public class ValidPalindrome {
             }
             temp = r - 1;
             if (temp > l) {
-                if (yes(l, temp, s)) {
-                    return true;
-                }
+                return yes(l, temp, s);
             }
             return false;
         }
