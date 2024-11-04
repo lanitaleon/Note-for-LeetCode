@@ -25,7 +25,8 @@ public class LargestTriangleArea {
         // https://en.wikipedia.org/wiki/Convex_hull
         // Andrew 算法
         // https://leetcode.cn/problems/erect-the-fence/solutions/1440879/an-zhuang-zha-lan-by-leetcode-solution-75s3/
-        // 我现在相似，有没有懂的
+        // 我现在相似，有没有懂的，用 hard 587 的解法做简单题，有没有懂的，
+        // 这个最大三角形的三个点一定在凸包范围内，所以先算出凸包，再枚举
         int[][] convexHull = getConvexHull(points);
         int n = convexHull.length;
         double ret = 0.0;
