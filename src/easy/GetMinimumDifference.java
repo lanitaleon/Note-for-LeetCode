@@ -12,7 +12,7 @@ import bean.TreeNode;
  *     <li>0 <= Node.val <= 10^5</li>
  * </ul>
  * <h2>注意</h2>
- * <p>本题与 783 相同</p>
+ * <p>本题与 783 相同 {@link MinDiffInBST}</p>
  */
 public class GetMinimumDifference {
     public static void main(String[] args) {
