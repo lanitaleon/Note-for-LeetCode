@@ -9,7 +9,7 @@ package easy;
  * <p>输出："134"</p>
  * <h2>提示：</h2>
  * <ul>
- *     <li>1 <= num1.length, num2.length <= 104</li>
+ *     <li>1 <= num1.length, num2.length <= 10^4</li>
  *     <li>num1 和num2 都只包含数字 0-9</li>
  *     <li>num1 和num2 都不包含任何前导零</li>
  * </ul>

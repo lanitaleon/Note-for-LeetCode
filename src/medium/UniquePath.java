@@ -9,7 +9,7 @@ package medium;
  * 问总共有多少条不同的路径？
  * <p>
  * 1 <= m, n <= 100
- * 题目数据保证答案小于等于 2 * 109
+ * 题目数据保证答案小于等于 2 * 10^9
  */
 public class UniquePath {
 
