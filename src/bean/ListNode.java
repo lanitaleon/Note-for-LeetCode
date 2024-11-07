@@ -24,4 +24,14 @@ public class ListNode {
             temp = temp.next;
         }
     }
+
+    public ListNode mockToNum(int n) {
+        ListNode head = this;
+        ListNode temp = head;
+        for (int i = 2; i <= n; i++) {
+            temp.next = new ListNode(i);
+            temp = temp.next;
+        }
+        return head;
+    }
 }
