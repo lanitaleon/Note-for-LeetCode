@@ -641,3 +641,7 @@ Pow(x, n)【50】
 https://zh.wikipedia.org/zh-cn/%E5%87%B8%E5%8C%85#%E5%8C%85%E8%A3%B9%E6%B3%95%EF%BC%88Jarvis%E6%AD%A5%E8%BF%9B%E6%B3%95%EF%BC%89
 
 最大三角形面积【812】
+
+#### 图/数学
+
+找到小镇的法官【997】
