@@ -19,11 +19,11 @@ import java.util.Deque;
  */
 public class RemoveOuterParentheses {
     /**
-     * 7ms 官解一 栈
+     * 7ms 官解一 栈 这题确实应该想到栈，但不是最好的
      */
     public String removeOuterParentheses3(String s) {
         StringBuffer res = new StringBuffer();
-        Deque<Character> stack = new ArrayDeque<Character>();
+        Deque<Character> stack = new ArrayDeque<>();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (c == ')') {
