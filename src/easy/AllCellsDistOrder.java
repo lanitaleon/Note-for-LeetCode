@@ -20,6 +20,7 @@ public class AllCellsDistOrder {
      * 4ms 官解三 几何法 也有点像 bfs
      * 总之就是按照我设想的理想解法那样子实现，我没写出来哈哈
      * 力扣就是非要把四个方向数组刻进我的脑子里 一大堆应用题
+     * 题解中的曼哈顿距离 就是 |r1 - r2| + |c1 - c2|
      */
     int[] dr = {1, 1, -1, -1};
     int[] dc = {1, -1, -1, 1};
@@ -48,6 +49,7 @@ public class AllCellsDistOrder {
 
     /**
      * 7ms 桶排序 官解二
+     * 这么看我写的也是桶排序，只不过用了 tree map
      */
     public int[][] allCellsDistOrder3(int rows, int cols, int rCenter, int cCenter) {
         int maxDist = Math.max(rCenter, rows - 1 - rCenter) + Math.max(cCenter, cols - 1 - cCenter);
