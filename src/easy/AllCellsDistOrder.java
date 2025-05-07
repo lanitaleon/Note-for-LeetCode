@@ -78,6 +78,19 @@ public class AllCellsDistOrder {
         return Math.abs(r1 - r2) + Math.abs(c1 - c2);
     }
 
+    /**
+     * 12ms 官解一 直接排序
+     */
+    public int[][] allCellsDistOrder2(int rows, int cols, int rCenter, int cCenter) {
+        int[][] ret = new int[rows * cols][];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                ret[i * cols + j] = new int[]{i, j};
+            }
+        }
+        Arrays.sort(ret, Comparator.comparingInt(a -> (Math.abs(a[0] - rCenter) + Math.abs(a[1] - cCenter))));
+        return ret;
+    }
 
     /**
      * 18ms 我写的 暴力解
@@ -111,20 +124,6 @@ public class AllCellsDistOrder {
             }
         }
         return result;
-    }
-
-    /**
-     * 12ms 官解一 直接排序
-     */
-    public int[][] allCellsDistOrder2(int rows, int cols, int rCenter, int cCenter) {
-        int[][] ret = new int[rows * cols][];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                ret[i * cols + j] = new int[]{i, j};
-            }
-        }
-        Arrays.sort(ret, Comparator.comparingInt(a -> (Math.abs(a[0] - rCenter) + Math.abs(a[1] - cCenter))));
-        return ret;
     }
 
     public static void main(String[] args) {
