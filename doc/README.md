@@ -214,6 +214,10 @@ https://www.cnblogs.com/chengxiao/p/6129630.html
 
 HomeWork-Q2 原地归并排序
 
+## 3.6 桶排序
+
+距离顺序排列矩阵单元格【1030】
+
 # [4] 指针
 
 ## 4.1 双指针
