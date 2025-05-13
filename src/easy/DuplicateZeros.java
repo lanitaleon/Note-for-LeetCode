@@ -30,6 +30,23 @@ public class DuplicateZeros {
         int[] a2 = new int[]{1, 2, 3};
         d.duplicateZeros(a2);
         System.out.println(Arrays.toString(a2));
+
+        // [1,2,3]
+        int[] a4 = new int[]{1, 2, 3};
+        d.duplicateZeros4(a4);
+        System.out.println(Arrays.toString(a4));
+    }
+
+    /**
+     * 2ms 民解 我的评价是 这都比我快？
+     */
+    public void duplicateZeros4(int[] arr) {
+        StringBuilder sb = new StringBuilder();
+        for (int j : arr) sb.append(j);
+        String s = sb.toString();
+        s = s.replace("0", "00");
+        for (int i = 0; i < arr.length; ++i)
+            arr[i] = s.charAt(i) - '0';
     }
 
     /**
