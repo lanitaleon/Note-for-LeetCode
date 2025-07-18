@@ -62,7 +62,7 @@ public class NumEquivDominoPairs {
     }
 
     /**
-     * 2ms 官解一
+     * 2ms 官解一 还有一个21年的官解用哈希解懒得贴了
      */
     public int numEquivDominoPairs3(int[][] dominoes) {
         // 于是我们不妨直接让每一个二元对都变为指定的格式，即第一维必须不大于第二维。这样两个二元对「等价」当且仅当两个二元对完全相同。
