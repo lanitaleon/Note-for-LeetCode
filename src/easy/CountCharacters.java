@@ -32,9 +32,7 @@ public class CountCharacters {
         int[] tmp = new int[26];
         int len = 0;
         for (String word : words) {
-            for (int i = 0; i < 26; i++) {
-                tmp[i] = count[i];
-            }
+            System.arraycopy(count, 0, tmp, 0, 26);
             len += canSpell(word, tmp);
         }
         return len;
