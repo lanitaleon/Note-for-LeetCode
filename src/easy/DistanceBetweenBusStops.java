@@ -19,7 +19,7 @@ public class DistanceBetweenBusStops {
     public static void main(String[] args) {
         DistanceBetweenBusStops d = new DistanceBetweenBusStops();
         System.out.println(17 == d.distanceBetweenBusStops(new int[]{7, 10, 1, 12, 11, 14, 5, 0}, 7, 2));
-        System.out.println(3 == d.distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 0, 2));
+        System.out.println(3 == d.distanceBetweenBusStops2(new int[]{1, 2, 3, 4}, 0, 2));
     }
 
     /**
