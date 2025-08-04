@@ -9,7 +9,8 @@ package easy;
  * <p>返回将所有筹码移动到同一位置上所需要的 最小代价 。</p>
  * <h2>提示</h2>
  * <ul>
- *     <li></li>
+ *     <li>1 <= position.length <= 100</li>
+ *     <li>1 <= position[i] <= 10^9</li>
  * </ul>
  */
 public class MinCostToMoveChips {
