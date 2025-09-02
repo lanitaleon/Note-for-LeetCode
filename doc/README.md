@@ -699,3 +699,7 @@ https://zh.wikipedia.org/zh-cn/%E5%87%B8%E5%8C%85#%E5%8C%85%E8%A3%B9%E6%B3%95%EF
 ## 6.30 洗牌算法Fisher-Yates
 
 打乱数组【384】
+
+## 6.31 切比雪夫距离 Chebyshev distance
+
+访问所有点的最小时间【1266】
